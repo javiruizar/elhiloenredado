@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  web:
+    image: elhiloenredado-web:${IMAGE_TAG:-latest}
+    container_name: elhiloenredado-web
+    ports:
+      - "3002:3000" # Puerto expuesto en el NAS
+    env_file:
+      - .env
+    volumes:
+      # Mapeo de la carpeta de imágenes subidas
+      - /home/javi/web-projects/elhiloenredado/public/product:/app/public/product
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: elhiloenredado-db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    env_file:
+      - .env
+    ports:
+      - "5434:5432" # Puerto mapeado por si quieres conectar DBeaver al NAS
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

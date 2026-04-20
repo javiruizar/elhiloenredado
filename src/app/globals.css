@@ -1,26 +1,95 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* ==========================================================================
+       1. PALETA DE COLORES DE MARCA
+       Colores artesanales y cálidos que dan identidad a la tienda.
+       Definidos en formato HSL (Hue, Saturation, Lightness).
+       ========================================================================== */
+    --brand-cream: 45 40% 96%; /* #FDFBF4 - Beige crema muy claro y cálido */
+    --brand-sand: 40 30% 90%;  /* #EFECE3 - Beige arena suave */
+    --brand-blush: 5 47% 83%;  /* #E6C2BF - Rosa empolvado para detalles */
+    --brand-sky: 200 66% 80%;  /* #A8D8F0 - Azul cielo muy suave */
+    --brand-sage: 51 24% 40%;  /* Verde salvia/oliva oscuro (Aporta elegancia y contraste) */
+
+    /* ==========================================================================
+       2. PALETA DE COLORES NEUTROS
+       Fondos, textos, bordes y anillos de foco.
+       ========================================================================== */
+    --background: 0 0% 100%;         /* Blanco puro para dar limpieza */
+    --foreground: 0 0% 0%;           /* Negro puro para el texto principal */
+    --border: 42 44% 81%;            /* Bordes sutiles (usando el tono 'sand') */
+    --input: 42 44% 81%;             /* Bordes de formularios (usando 'sand') */
+    --ring: 51 24% 40%;              /* Anillo al hacer clic/foco (usando 'sage' oscuro) */
+    --radius: 0.75rem;               /* 12px - Bordes más redondeados para un estilo orgánico */
+
+    /* ==========================================================================
+       3. PALETA SEMÁNTICA (COMPONENTES UI)
+       Colores asignados a funciones lógicas (Botones, tarjetas, errores).
+       ========================================================================== */
+    
+    /* Primary: Botones y acciones principales (Verde salvia muy oscuro, casi negro) */
+    --primary: 60 10% 15%;           /* #2A2A25 - Mucho más oscuro y contrastado */
+    --primary-foreground: 0 0% 100%; /* Texto blanco brillante sobre botón primario */
+
+    /* Secondary: Botones secundarios o etiquetas */
+    --secondary: 40 30% 90%;         /* Asignado al 'sand' */
+    --secondary-foreground: 60 10% 15%; /* Texto muy oscuro sobre botón arena */
+
+    /* Muted: Elementos inactivos o fondos de baja jerarquía */
+    --muted: 45 40% 96%;             /* Asignado al 'cream' */
+    --muted-foreground: 0 0% 30%;    /* Gris oscuro puro para mejor lectura */
+
+    /* Accent: Interacciones (Hover) en menús y listas */
+    --accent: 45 40% 96%;            /* Asignado al 'cream' */
+    --accent-foreground: 60 10% 15%; /* Texto salvia muy oscuro al hacer hover */
+
+    /* Destructive: Acciones de borrado/error */
+    --destructive: 5 60% 55%;        /* Rojo arcilla (Menos agresivo que un rojo neón) */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Superficies: Tarjetas de productos, modales, desplegables */
+    --card: 0 0% 100%;
+    --card-foreground: 30 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 15% 15%;
+  }
+
+  .dark {
+    /* Versión oscura (Simplificada y mapeada semánticamente) */
+    --background: 30 15% 10%;
+    --foreground: 60 56% 91%;
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 51 24% 40%;
+    
+    --primary: 51 24% 50%;
+    --primary-foreground: 30 15% 10%;
+    --secondary: 30 15% 20%;
+    --secondary-foreground: 60 56% 91%;
+    --muted: 30 15% 15%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 30 15% 20%;
+    --accent-foreground: 51 24% 50%;
+    --destructive: 5 60% 45%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --card: 30 15% 12%;
+    --card-foreground: 60 56% 91%;
+    --popover: 30 15% 12%;
+    --popover-foreground: 60 56% 91%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: var(--ring);
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
 }

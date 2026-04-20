@@ -1,0 +1,14 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+.next
+.git
+.env*
+.DS_Store
+artifact
+dev.db
+dev.db-journal
+plan.md
+gemini/

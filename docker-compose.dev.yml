@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres-dev:
+    image: postgres:16-alpine
+    container_name: elhiloenredado-db-dev
+    environment:
+      - POSTGRES_USER=elhiloenredado
+      - POSTGRES_PASSWORD=elhiloenredado
+      - POSTGRES_DB=elhiloenredado_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_dev:
