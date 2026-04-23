@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { prisma } from "@/lib/prisma";
 import { ProductForm } from "@/components/admin/ProductForm";
 import { ChevronLeft } from "lucide-react";

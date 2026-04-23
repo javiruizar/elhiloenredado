@@ -1,7 +1,7 @@
-FROM node:20-slim AS base
+FROM node:20-alpine AS base
 
 # Install openssl for Prisma
-RUN apt-get update && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache libc6-compat openssl
 
 # Stage 1: Install dependencies
 FROM base AS deps

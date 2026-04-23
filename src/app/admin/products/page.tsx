@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { prisma } from "@/lib/prisma";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Plus, Edit, Trash2, Package } from "lucide-react";
