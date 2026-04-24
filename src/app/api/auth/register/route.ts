@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import { sendWelcomeEmail } from "@/lib/mail";
 
 export async function POST(req: Request) {
   try {
@@ -41,6 +42,15 @@ export async function POST(req: Request) {
         role: isAdmin ? "ADMIN" : "USER",
       },
     });
+
+    // Enviar correo de bienvenida
+    try {
+      if (user.email) {
+        await sendWelcomeEmail(user.email, user.name || "amiga/o");
+      }
+    } catch (error) {
+      console.error("Error enviando email de bienvenida:", error);
+    }
 
     return NextResponse.json({ message: "Usuario creado", user: { email: user.email } }, { status: 201 });
   } catch {

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, User, LogOut, Home, ShoppingBag, Info, UserCircle } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -37,8 +38,19 @@ export const MobileNav = ({ session }: MobileNavProps) => {
           <SheetHeader className="p-6 border-b border-sand/20 bg-white/50">
             <SheetTitle className="text-left">
               <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sage text-primary shadow-sm">
-                  <span className="font-serif text-sm">H</span>
+                <div className="relative flex h-12 w-12 items-center justify-center">
+                  {/* Cuadro original con la H (Comentado para futura referencia)
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sage text-primary shadow-sm">
+                    <span className="font-serif text-sm">H</span>
+                  </div>
+                  */}
+                  <Image 
+                    src="/elhiloenredado_icon.png" 
+                    alt="Logo El Hilo Enredado"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <span className="text-xl font-bold text-primary tracking-tighter">
                   El Hilo <span className="text-sage italic font-serif">Enredado</span>

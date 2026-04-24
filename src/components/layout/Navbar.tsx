@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { auth } from '@/auth';
 import { CartButton } from '@/components/cart/CartButton';
 import { MobileNav } from './MobileNav';
@@ -29,8 +30,19 @@ export const Navbar = async () => {
             href="/" 
             className="group flex items-center gap-2 text-2xl font-bold tracking-tighter text-primary transition-all hover:opacity-90"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage text-primary shadow-lg transition-transform group-hover:rotate-12 group-hover:scale-110">
-              <span className="font-serif text-xl">H</span>
+            <div className="relative flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:rotate-180 group-hover:scale-110">
+              {/* Cuadro original con la H (Comentado para futura referencia)
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage text-primary shadow-lg">
+                <span className="font-serif text-xl">H</span>
+              </div>
+              */}
+              <Image 
+                src="/elhiloenredado_icon.png" 
+                alt="Logo El Hilo Enredado"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="hidden sm:inline-block">
               El Hilo <span className="text-sage italic font-serif">Enredado</span>

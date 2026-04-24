@@ -78,4 +78,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   secret: process.env.AUTH_SECRET || "secreto-muy-largo-de-desarrollo",
+  events: {
+    async createUser({ user }) {
+      // Cuando un usuario se crea (por ejemplo, vía Google), 
+      // comprobamos si debe ser ADMIN.
+      const adminEmail = "javiruizar@gmail.com";
+      if (user.email?.toLowerCase() === adminEmail) {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { role: "ADMIN" },
+        });
+      }
+    },
+  },
 });
