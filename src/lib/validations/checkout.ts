@@ -2,7 +2,6 @@ import { z } from "zod";
 
 export const checkoutSchema = z.object({
   fullName: z.string().min(2, "El nombre es demasiado corto"),
-  email: z.string().email("Email inválido"),
   phone: z.string().min(9, "Teléfono inválido"),
   address: z.string().min(10, "La dirección es demasiado corta"),
   city: z.string().min(2, "Ciudad inválida"),

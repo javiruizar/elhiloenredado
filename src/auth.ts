@@ -5,12 +5,14 @@ import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
+console.log("Configuring Auth.js with Google ID:", process.env.AUTH_GOOGLE_ID?.substring(0, 10) + "...");
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
-      clientId: process.env.AUTH_GOOGLE_ID || "dummy",
-      clientSecret: process.env.AUTH_GOOGLE_SECRET || "dummy",
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
     Credentials({

@@ -4,6 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { VariantProps } from "class-variance-authority";
 import { useCartStore } from "@/store/cart";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 export const AddToCartButton = ({ 
   productId, 
@@ -19,10 +20,18 @@ export const AddToCartButton = ({
   className?: string;
 }) => {
   const [loading, setLoading] = useState(false);
+  const { data: session } = useSession();
   const toggleCart = useCartStore((state) => state.toggleCart);
   const setItems = useCartStore((state) => state.setItems);
 
   const addToCart = async () => {
+    if (!session) {
+      toast.info("Inicia sesión para añadir al carrito", {
+        description: "Tardarás menos de un minuto y nos ayudará a gestionar mejor tu pedido."
+      });
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch("/api/cart", {

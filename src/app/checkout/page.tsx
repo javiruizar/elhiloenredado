@@ -20,7 +20,6 @@ export default function CheckoutPage() {
 
   const [formData, setFormData] = useState<CheckoutInput>({
     fullName: "",
-    email: "",
     phone: "",
     address: "",
     city: "",
@@ -67,7 +66,7 @@ export default function CheckoutPage() {
     try {
       // Concatenate fields for the current API address field
       // This ensures compatibility with the existing backend schema
-      const fullAddress = `${formData.fullName}\nEmail: ${formData.email}\nTel: ${formData.phone}\nDir: ${formData.address}, ${formData.city}, ${formData.postalCode}`;
+      const fullAddress = `${formData.fullName}\nTel: ${formData.phone}\nDir: ${formData.address}, ${formData.city}, ${formData.postalCode}`;
 
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -140,19 +139,7 @@ export default function CheckoutPage() {
                   />
                   {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground/80">Correo Electrónico *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-2.5 bg-cream/20 border ${errors.email ? 'border-red-500' : 'border-sand/40'} rounded-lg focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all`}
-                    placeholder="juan@ejemplo.com"
-                  />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-                </div>
-                <div className="space-y-2 md:col-span-2">
+                <div className="space-y-2 md:col-span-1">
                   <label className="text-sm font-medium text-foreground/80">Teléfono *</label>
                   <input
                     type="tel"

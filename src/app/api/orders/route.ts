@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { sendOrderConfirmationEmail } from "@/lib/mail";
 
 export async function POST(req: Request) {
   try {
@@ -54,6 +55,22 @@ export async function POST(req: Request) {
 
       return newOrder;
     });
+
+    // Enviar correo de confirmación al usuario
+    try {
+      if (session.user?.email) {
+        // Buscamos los items con los nombres de productos para el correo
+        const fullOrder = await prisma.order.findUnique({
+          where: { id: order.id },
+          include: { items: { include: { product: true } } }
+        });
+        if (fullOrder) {
+          await sendOrderConfirmationEmail(session.user.email, fullOrder);
+        }
+      }
+    } catch (error) {
+      console.error("Error al enviar email de confirmación:", error);
+    }
 
     const response = NextResponse.json({ success: true, orderId: order.id }, { status: 201 });
     response.headers.delete("Set-Cookie");

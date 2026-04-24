@@ -13,7 +13,7 @@ export const InstagramCTA = () => {
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-8">
           No te pierdas las últimas creaciones, detrás de cámaras y ofertas especiales.
         </p>
-        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <Link href="https://instagram.com/elhiloenredado_" target="_blank" rel="noopener noreferrer">
           <Button>
             <Instagram className="mr-2 h-4 w-4" />
             @elhiloenredado
