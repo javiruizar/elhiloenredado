@@ -52,7 +52,7 @@ echo 'docker compose up -d' >> $DEPLOY_DIR/run.sh
 echo 'echo "Esperando 10 segundos a que la base de datos PostgreSQL arranque por completo..."' >> $DEPLOY_DIR/run.sh
 echo 'sleep 10' >> $DEPLOY_DIR/run.sh
 echo 'echo "Ejecutando sincronización de base de datos..."' >> $DEPLOY_DIR/run.sh
-echo 'docker exec elhiloenredado-web ./node_modules/.bin/prisma db push --skip-generate' >> $DEPLOY_DIR/run.sh
+echo 'docker exec elhiloenredado-web npx -y prisma@5.22.0 db push --skip-generate' >> $DEPLOY_DIR/run.sh
 echo 'echo "------------------------------------------------"' >> $DEPLOY_DIR/run.sh
 echo 'echo "¡Despliegue de la v$VERSION completado con éxito en el puerto 3002!"' >> $DEPLOY_DIR/run.sh
 

@@ -18,9 +18,10 @@ COPY . .
 # Generate Prisma client and build the Next.js app
 # Pasamos una URL temporal limpia para que la validación de Prisma no falle en el proceso de compilado de la imagen
 ARG DATABASE_URL="postgresql://build:build@localhost:5432/build"
-RUN DATABASE_URL=$DATABASE_URL npx prisma generate
-RUN DATABASE_URL=$DATABASE_URL npm run build
+ARG RESEND_API_KEY="re_dummy_key_for_build"
 
+RUN DATABASE_URL=$DATABASE_URL npx prisma generate
+RUN DATABASE_URL=$DATABASE_URL RESEND_API_KEY=$RESEND_API_KEY npm run build
 # Stage 3: Production server
 FROM base AS runner
 WORKDIR /app
@@ -35,7 +36,7 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Install Prisma CLI globally or locally to ensure it works at runtime
-RUN npm install prisma@5.22.0
+RUN npm install -g prisma@5.22.0
 
 # Copy Prisma schema and generated client for runtime usage (migrations, etc.)
 COPY --from=builder /app/prisma ./prisma

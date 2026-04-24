@@ -59,7 +59,7 @@ export const sendWelcomeEmail = async (email: string, name: string) => {
     const { data, error } = await resend.emails.send({
       from: "El Hilo Enredado <hola@elhiloenredado.javierruiz.org>",
       to: email,
-      subject: "¡Bienvenida a El Hilo Enredado! 🧵",
+      subject: "¡Bienvenid@ a El Hilo Enredado! 🧵",
       html: `
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #EFECE3; border-radius: 12px; background-color: #FDFBF4;">
           <div style="text-align: center; margin-bottom: 30px;">

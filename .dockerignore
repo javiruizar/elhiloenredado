@@ -8,7 +8,5 @@ README.md
 .env*
 .DS_Store
 artifact
-dev.db
-dev.db-journal
 plan.md
 gemini/
