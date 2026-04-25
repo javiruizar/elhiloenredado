@@ -34,7 +34,7 @@ export async function generateMetadata(
     openGraph: {
       title: `${product.name} | El Hilo Enredado`,
       description: product.description,
-      url: `https://elhiloenredado.com/product/${product.id}`,
+      url: `/product/${product.id}`,
       images: [
         {
           url: product.image,

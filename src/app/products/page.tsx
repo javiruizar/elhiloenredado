@@ -14,7 +14,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Catálogo | El Hilo Enredado",
     description: "Explora nuestra colección completa de artículos hechos a mano.",
-    url: "https://elhiloenredado.com/products",
+    url: "/products",
+    images: [
+      {
+        url: "/elhiloenredado_logo_medium.png",
+        width: 800,
+        height: 800,
+        alt: "Catálogo El Hilo Enredado",
+      },
+    ],
   }
 };
 

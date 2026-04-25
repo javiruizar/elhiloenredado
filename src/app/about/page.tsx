@@ -10,7 +10,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sobre Mí | El Hilo Enredado",
     description: "Conoce la historia detrás de El Hilo Enredado y nuestra pasión por la artesanía.",
-    url: "https://elhiloenredado.com/about",
+    url: "/about",
+    images: [
+      {
+        url: "/elhiloenredado_logo_medium.png",
+        width: 800,
+        height: 800,
+        alt: "Sobre El Hilo Enredado",
+      },
+    ],
   }
 };
 

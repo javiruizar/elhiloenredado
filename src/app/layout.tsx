@@ -20,6 +20,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://elhiloenredado.javierruiz.org"),
   title: {
     template: "%s | El Hilo Enredado",
     default: "El Hilo Enredado | Artículos Artesanales y Regalos Personalizados",
@@ -31,23 +32,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://elhiloenredado.com",
+    url: "/",
     title: "El Hilo Enredado | Artículos Artesanales y Regalos Personalizados",
     description: "Descubre nuestras creaciones únicas, hechas a mano con dedicación.",
     siteName: "El Hilo Enredado",
     images: [
       {
-        url: "/Bolsas ropa interior.png", // Usa una imagen genérica bonita que ya tengas
-        width: 1200,
-        height: 630,
+        url: "/elhiloenredado_logo_medium.png",
+        width: 800,
+        height: 800,
         alt: "El Hilo Enredado - Artículos Artesanales",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "El Hilo Enredado | Artículos Artesanales",
     description: "Descubre nuestras creaciones únicas, hechas a mano con dedicación.",
+    images: ["/elhiloenredado_logo_medium.png"],
   },
 };
 
