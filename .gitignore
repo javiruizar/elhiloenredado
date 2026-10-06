@@ -44,9 +44,5 @@ next-env.d.ts
 /prisma/migrations
 /src/generated/prisma
 
-GEMINI.md
-plan.md
-subplan.md
-
 /public
 /artifact
